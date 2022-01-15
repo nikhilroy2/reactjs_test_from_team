@@ -1,0 +1,27 @@
+/* default global settings */
+* {
+  box-sizing: border-box;
+}
+menu {
+  margin: 0;
+}
+ul,ol{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* default global settings End*/
+#Layout{
+  display: flex;
+}
+
+main{
+  flex: 1;
+  height: 100vh;
+}
+#google_map_view{
+  h2{
+    text-align: center;
+  }
+}

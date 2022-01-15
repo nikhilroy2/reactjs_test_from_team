@@ -12,7 +12,7 @@ export function Sidebar() {
   let NavLinkObject = [
     {
       id: 1,
-      link: "Dashboard",
+      link: "/",
       icon: <HomeIcon />,
       name: "Dashboard",
     },
