@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import logo from "./logo.svg";
+import "./App.css";
+import Base from "./Layout/Base";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Base>
+          <main>
+          <GoogleMapView></GoogleMapView>
+          </main>
+        </Base>
+      </div>
+    </BrowserRouter>
   );
 }
 
-export default App;
+function GoogleMapView() {
+
+  return (
+    <div id="google_map_view">
+      
+    </div>
+  )
+}

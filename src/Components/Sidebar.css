@@ -1,0 +1,147 @@
+#Sidebar {
+  position: relative;
+  width: 300px;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#Sidebar .bar_icon_wrapper {
+  position: relative;
+}
+
+#Sidebar .bar_icon_wrapper .bar_icon_inner {
+  position: absolute;
+  width: 42px;
+  top: 25px;
+  right: 5px;
+  height: 25px;
+  cursor: pointer;
+}
+
+#Sidebar .bar_icon_wrapper .bar_icon_inner span.icon_span {
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  height: 3px;
+  background: black;
+  right: 0px;
+}
+
+#Sidebar .bar_icon_wrapper .bar_icon_inner span.icon_span:nth-child(1) {
+  top: 0px;
+}
+
+#Sidebar .bar_icon_wrapper .bar_icon_inner span.icon_span:nth-child(2) {
+  top: 7px;
+  right: -6px;
+}
+
+#Sidebar .bar_icon_wrapper .bar_icon_inner span.icon_span:nth-child(3) {
+  top: 14px;
+}
+
+#Sidebar menu#sidebar_menu_wrapper {
+  position: relative;
+  padding: 0;
+  background: #01aef0;
+  width: calc(300px - 70px);
+  padding-top: 100px;
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#Sidebar menu#sidebar_menu_wrapper ul {
+  padding-left: 10px;
+}
+
+#Sidebar menu#sidebar_menu_wrapper a.nav_link {
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  border-radius: 25px 0px 0px 25px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#Sidebar menu#sidebar_menu_wrapper a.nav_link svg {
+  fill: white;
+  height: 25px;
+  margin-right: 10px;
+}
+
+#Sidebar menu#sidebar_menu_wrapper a.nav_link.active_nav, #Sidebar menu#sidebar_menu_wrapper a.nav_link:hover {
+  background: white;
+  color: black;
+}
+
+#Sidebar menu#sidebar_menu_wrapper a.nav_link.active_nav svg, #Sidebar menu#sidebar_menu_wrapper a.nav_link:hover svg {
+  fill: black;
+}
+
+#Sidebar.Sidebar_minimize {
+  width: 58px;
+}
+
+#Sidebar.Sidebar_minimize .bar_icon_wrapper {
+  position: static;
+}
+
+#Sidebar.Sidebar_minimize .bar_icon_wrapper span.icon_span:nth-child(2) {
+  -webkit-animation: 0.3s linear icon_span2 forwards;
+          animation: 0.3s linear icon_span2 forwards;
+}
+
+@-webkit-keyframes icon_span2 {
+  0% {
+    right: -6px;
+  }
+  50% {
+    right: -15px;
+  }
+  100% {
+    right: 6px;
+  }
+}
+
+@keyframes icon_span2 {
+  0% {
+    right: -6px;
+  }
+  50% {
+    right: -15px;
+  }
+  100% {
+    right: 6px;
+  }
+}
+
+#Sidebar.Sidebar_minimize menu#sidebar_menu_wrapper {
+  -webkit-transform: translateX(-300px);
+          transform: translateX(-300px);
+  opacity: 0;
+}
+
+#google_map_view {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: solid;
+}
+/*# sourceMappingURL=Sidebar.css.map */

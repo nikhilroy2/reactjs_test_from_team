@@ -1,0 +1,114 @@
+// color variable
+$black: black;
+$white: white;
+// color variable End
+#Sidebar {
+  position: relative;
+  width: 300px;
+  height: 100vh;
+  //background: #E5E5E5;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.3s;
+  .bar_icon_wrapper {
+    position: relative;
+    .bar_icon_inner {
+      position: absolute;
+      width: 42px;
+      top: 25px;
+      right: 5px;
+      height: 25px;
+      cursor: pointer;
+      span.icon_span {
+        position: absolute;
+        display: inline-block;
+        width: 30px;
+        height: 3px;
+        background: $black;
+        right: 0px;
+        // 7px top bottom space
+        &:nth-child(1) {
+          top: 0px;
+        }
+        &:nth-child(2) {
+          top: 7px;
+          right: -6px;
+        }
+        &:nth-child(3) {
+          top: 14px;
+        }
+      }
+    }
+  }
+
+  menu#sidebar_menu_wrapper {
+    position: relative;
+    padding: 0;
+    background: #01aef0;
+    width: calc(300px - 70px);
+    padding-top: 100px;
+    opacity: 1;
+    transform: translateX(0px);
+    transition: 0.3s;
+    ul {
+      padding-left: 10px;
+    }
+    a.nav_link {
+      color: white;
+      text-decoration: none;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      border-radius: 25px 0px 0px 25px;
+      transition: 0.3s;
+      svg {
+        fill: $white;
+        height: 25px;
+        margin-right: 10px;
+      }
+      &.active_nav,
+      &:hover {
+        background: $white;
+        color: $black;
+        svg {
+          fill: $black;
+        }
+      }
+    }
+  }
+  &.Sidebar_minimize {
+    width: 58px;
+    .bar_icon_wrapper {
+      position: static;
+      span.icon_span:nth-child(2) {
+        animation: 0.3s linear icon_span2 forwards;
+        @keyframes icon_span2 {
+          0% {
+            right: -6px;
+          }
+          50% {
+            right: -15px;
+          }
+          100% {
+            right: 6px;
+          }
+        }
+      }
+    }
+    menu#sidebar_menu_wrapper {
+      transform: translateX(-300px);
+      opacity: 0;
+    }
+  }
+}
+
+// Sidebar minimize
+
+
+// google_map_view
+
+#google_map_view{
+    flex: 1;
+    border: solid;
+}
