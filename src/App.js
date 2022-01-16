@@ -1,11 +1,20 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { Component } from "react";
-import GoogleMapReact from "google-map-react";
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import Base from "./Layout/Base";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import Map from "./Map";
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  increment,
+  decrement,
+  incrementByAmount,
+  listIncreased,
+  startLocation,
+  endLocation
+} from './Redux_management/reducer'
+
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -22,6 +31,17 @@ export default function App() {
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 function GoogleMapView() {
+
+  const dispatch = useDispatch();
+
+  const inputStartLocation = (event)=> {
+    dispatch(startLocation(event.target.value))
+    //console.log(count)
+  }
+  const inputEndLocation = (event)=> {
+    dispatch(endLocation(100))
+    console.log(event.target.value)
+  }
   return (
     <div id="google_map_view">
       <h2>Google map</h2>
@@ -29,28 +49,18 @@ function GoogleMapView() {
       <div className="map_control_wrapper">
         <div className="form_group">
           <label htmlFor="">Start Location</label>
-          <input type="text" />
+          <input type="text" onInput={inputStartLocation} />
         </div>
         <br />
         <div className="form_group">
           <label htmlFor="">End Location</label>
-          <input type="text" />
+          <input type="text" onInput={inputEndLocation} />
         </div>
         <br />
       </div>
       <div id="map_embed">
-        <ReactMap></ReactMap>
+        <Map></Map>
       </div>
     </div>
-  );
-}
-const render = (status: Status) => {
-  return <h1>{status}</h1>;
-};
-function ReactMap() {
-  return (
-    <Wrapper apiKey={"YOUR_API_KEY"} render={render}>
-      <Map></Map>
-    </Wrapper>
   );
 }

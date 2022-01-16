@@ -60,14 +60,25 @@
   transition: 0.3s;
 }
 
+#Sidebar menu#sidebar_menu_wrapper::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 #Sidebar menu#sidebar_menu_wrapper ul {
   padding-left: 10px;
+}
+
+#Sidebar menu#sidebar_menu_wrapper ul li:not(:last-child) {
+  margin-bottom: 5px;
 }
 
 #Sidebar menu#sidebar_menu_wrapper a.nav_link {
   color: white;
   text-decoration: none;
-  padding: 12px;
+  padding: 10px 12px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -83,16 +94,43 @@
 #Sidebar menu#sidebar_menu_wrapper a.nav_link svg {
   fill: white;
   height: 25px;
-  margin-right: 10px;
+  margin-right: 13px;
+  z-index: 2;
+}
+
+#Sidebar menu#sidebar_menu_wrapper a.nav_link::after {
+  content: "";
+  width: 0%;
+  height: 100%;
+  pointer-events: none;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 25px 0px 0px 25px;
 }
 
 #Sidebar menu#sidebar_menu_wrapper a.nav_link.active_nav, #Sidebar menu#sidebar_menu_wrapper a.nav_link:hover {
-  background: white;
   color: black;
 }
 
+#Sidebar menu#sidebar_menu_wrapper a.nav_link.active_nav::after, #Sidebar menu#sidebar_menu_wrapper a.nav_link:hover::after {
+  width: 100%;
+  opacity: 1;
+  background: white;
+  z-index: -1;
+}
+
 #Sidebar menu#sidebar_menu_wrapper a.nav_link.active_nav svg, #Sidebar menu#sidebar_menu_wrapper a.nav_link:hover svg {
-  fill: black;
+  fill: #01aef0;
+}
+
+#Sidebar menu#sidebar_menu_wrapper a.nav_link.active_nav::after {
+  background: white;
+  width: 100%;
+  z-index: -1;
 }
 
 #Sidebar.Sidebar_minimize {

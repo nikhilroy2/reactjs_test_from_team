@@ -45,35 +45,41 @@ export function Sidebar() {
   const sidebarToggle = () => {
     setToggle(!toggle);
   };
-  
-  function matchMediaFunc(){
+
+  function matchMediaFunc() {
     let x = window.matchMedia("(max-width: 700px)");
     //console.log(x.matches)
     x.matches ? setToggle(true) : setToggle(false);
   }
   useEffect(() => {
-    matchMediaFunc()
+    matchMediaFunc();
   }, []);
 
-  window.addEventListener('resize',()=> {
-    matchMediaFunc()
-  })
+  window.addEventListener("resize", () => {
+    matchMediaFunc();
+  });
+  
   return (
     <div id="Sidebar" className={toggle ? "Sidebar_minimize" : ""}>
       <menu id="sidebar_menu_wrapper">
         <ul>
           {NavLinkObject.map((v) => {
             return (
-              <NavLink
-                to={v.link}
-                key={v.id}
-                href={v.link}
-                className={({ isActive }) =>
-                  isActive ? `active_nav nav_link` : "nav_link"
-                }
-              >
-                {v.icon} {v.name}{" "}
-              </NavLink>
+              <li  key={v.id}>
+                <NavLink
+                  to={v.link}
+                 
+                  href={v.link}
+                  className={({ isActive }) =>
+                    isActive ? `active_nav nav_link` : "nav_link"
+                  } 
+                >
+                <span className="design_angle_top"></span>
+                  {v.icon} {v.name}{" "}
+                <span className="design_angle_bottom"></span>
+
+                </NavLink>
+              </li>
             );
           })}
         </ul>

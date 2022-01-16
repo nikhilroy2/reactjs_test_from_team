@@ -1,6 +1,7 @@
 // color variable
 $black: black;
 $white: white;
+$sidebar_bg: #01aef0;
 // color variable End
 #Sidebar {
   position: relative;
@@ -44,35 +45,79 @@ $white: white;
   menu#sidebar_menu_wrapper {
     position: relative;
     padding: 0;
-    background: #01aef0;
+    background: $sidebar_bg;
     width: calc(300px - 70px);
     padding-top: 100px;
     opacity: 1;
     transform: translateX(0px);
     transition: 0.3s;
+    &::after{
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
     ul {
       padding-left: 10px;
+      li:not(:last-child) {
+        margin-bottom: 5px;
+      }
     }
+
     a.nav_link {
       color: white;
       text-decoration: none;
-      padding: 12px;
+      padding: 10px 12px;
       display: flex;
       align-items: center;
       position: relative;
-      border-radius: 25px 0px 0px 25px;
+      $link_radius: 25px 0px 0px 25px;
+      border-radius: $link_radius;
       transition: 0.3s;
       svg {
         fill: $white;
         height: 25px;
-        margin-right: 10px;
+        margin-right: 13px;
+        z-index: 2;
       }
+
+      &::after {
+        content: "";
+        width: 0%;
+        height: 100%;
+        pointer-events: none;
+        background: transparent;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transition: 0.3s;
+        border-radius: $link_radius;
+      }
+
       &.active_nav,
       &:hover {
-        background: $white;
+        // background: $white;
+        &::after{
+          width: 100%;
+          opacity: 1;
+          background: $white;
+          z-index: -1;
+        }
         color: $black;
         svg {
-          fill: $black;
+          fill: $sidebar_bg;
+        }
+      }
+      &.active_nav {
+        // .design_angle_bottom,
+        // .design_angle_top {
+        //   width: 13%;
+        //   opacity: 1;
+        // }
+        &::after {
+          background: $white;
+          width: 100%;
+          z-index: -1;
         }
       }
     }
@@ -104,5 +149,3 @@ $white: white;
 }
 
 // Sidebar minimize
-
-
