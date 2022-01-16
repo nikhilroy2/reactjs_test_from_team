@@ -3,17 +3,7 @@ import "./App.css";
 import Base from "./Layout/Base";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import Map from "./Map";
-
-import { useSelector, useDispatch } from "react-redux";
-import {
-  increment,
-  decrement,
-  incrementByAmount,
-  listIncreased,
-  startLocation,
-  endLocation
-} from './Redux_management/reducer'
-
+import { useState } from "react";
 
 export default function App() {
   return (
@@ -31,17 +21,15 @@ export default function App() {
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 function GoogleMapView() {
+  const [startLocation, setStartLocation] = useState("Thakurgaon");
+  const [endLocation, setEndLocation] = useState("Dinajpur");
 
-  const dispatch = useDispatch();
-
-  const inputStartLocation = (event)=> {
-    dispatch(startLocation(event.target.value))
-    //console.log(count)
-  }
-  const inputEndLocation = (event)=> {
-    dispatch(endLocation(100))
-    console.log(event.target.value)
-  }
+  const inputStartLocation = (event) => {
+    setStartLocation(event.target.value);
+  };
+  const inputEndLocation = (event) => {
+    setEndLocation(event.target.value);
+  };
   return (
     <div id="google_map_view">
       <h2>Google map</h2>
@@ -49,17 +37,30 @@ function GoogleMapView() {
       <div className="map_control_wrapper">
         <div className="form_group">
           <label htmlFor="">Start Location</label>
-          <input type="text" onInput={inputStartLocation} />
+          <select onInput={inputStartLocation} id="startLocation">
+            <option value="Dinajpur">Dinajpur</option>
+            <option value="Thakurgaon">Thakurgaon</option>
+            <option value="Dhaka">Dhaka</option>
+            <option value="Rajshahi">Rajshahi</option>
+            <option value="Sylhet">Sylhet</option>
+            <option value="Rangpur">Rangpur</option>
+          </select>
         </div>
         <br />
         <div className="form_group">
           <label htmlFor="">End Location</label>
-          <input type="text" onInput={inputEndLocation} />
+          <select onInput={inputEndLocation} id="endLocation">
+            <option value="Thakurgaon">Thakurgaon</option>
+            <option value="Dinajpur">Dinajpur</option>
+            <option value="Dhaka">Dhaka</option>
+            <option value="Rajshahi">Rajshahi</option>
+            <option value="Sylhet">Sylhet</option>
+            <option value="Rangpur">Rangpur</option>
+          </select>
         </div>
         <br />
       </div>
-      <div id="map_embed">
-        <Map></Map>
+      <div id="map_embed" style={{'height': '500px', 'width': '100%'}}>
       </div>
     </div>
   );
