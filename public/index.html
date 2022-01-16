@@ -73,6 +73,7 @@
         };
         document.getElementById('startLocation').addEventListener('change', onChangeHandler);
         document.getElementById('endLocation').addEventListener('change', onChangeHandler);
+
       }
     }
     // default
@@ -85,6 +86,19 @@
       }, function (response, status) {
         if (status === 'OK') {
           directionsDisplay.setDirections(response);
+          //console.log(directionsDisplay)
+
+          //let distance = new google.maps.geometry.spherical.computeDistanceBetween(41.85, 44)
+          //console.log(distance)
+          console.log(response)
+          let route1 = response.routes[0].legs[0];
+          //console.log(route1.distance.text)
+
+
+          // map_overview inside map
+          document.querySelector('.map_overview').removeAttribute('style');
+          document.querySelector('.map_overview [data-route-distance]').innerText = route1.distance.text;
+          document.querySelector('.map_overview [data-route-duration]').innerText = route1.duration.text;
         } else {
           window.alert('Directions request failed due to ' + status);
         }

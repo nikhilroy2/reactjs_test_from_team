@@ -60,7 +60,18 @@ function GoogleMapView() {
         </div>
         <br />
       </div>
-      <div id="map_embed" style={{'height': '500px', 'width': '100%'}}>
+      <div className="map_wrapper">
+        <div className="map_overview" style={{'display': 'none'}}>
+          <h2 >
+            Distance
+            <span data-route-distance></span>
+          </h2>
+          <h2>
+            Duration
+            <span data-route-duration></span>
+          </h2>
+        </div>
+        <div id="map_embed" style={{ height: "500px", width: "100%" }}></div>
       </div>
     </div>
   );

@@ -25,3 +25,27 @@ main{
     text-align: center;
   }
 }
+
+.map_wrapper{
+  position: relative;
+  .map_overview{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: white;
+    padding: 20px;
+    z-index: 10;
+    h2{
+      font-size: 20px;
+      span{
+        display: block;
+        color: #ccc;
+      }
+    }
+  }
+}
+select{
+  display: block;
+  padding: 12px;
+  width: 200px;
+}
